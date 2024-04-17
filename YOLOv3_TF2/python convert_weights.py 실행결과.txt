@@ -1,0 +1,937 @@
+(ds_study) D:\Git\ElaYJ_ws\Study_Deep_Learning\YOLOv3_TF2>python convert_weights.py
+2024-04-18 06:05:00.983913: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE SSE2 SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+Model: "model"
+__________________________________________________________________________________________________
+ Layer (type)                Output Shape                 Param #   Connected to
+==================================================================================================
+ input_1 (InputLayer)        [(None, 416, 416, 3)]        0         []
+
+ tf.math.truediv (TFOpLambd  (None, 416, 416, 3)          0         ['input_1[0][0]']
+ a)
+
+ conv_0 (Conv2D)             (None, 416, 416, 32)         864       ['tf.math.truediv[0][0]']
+
+ bnorm_0 (BatchNormalizatio  (None, 416, 416, 32)         128       ['conv_0[0][0]']
+ n)
+
+ leaky_0 (LeakyReLU)         (None, 416, 416, 32)         0         ['bnorm_0[0][0]']
+
+ zero_padding2d (ZeroPaddin  (None, 417, 417, 32)         0         ['leaky_0[0][0]']
+ g2D)
+
+ conv_1 (Conv2D)             (None, 208, 208, 64)         18432     ['zero_padding2d[0][0]']
+
+ bnorm_1 (BatchNormalizatio  (None, 208, 208, 64)         256       ['conv_1[0][0]']
+ n)
+
+ leaky_1 (LeakyReLU)         (None, 208, 208, 64)         0         ['bnorm_1[0][0]']
+
+ conv_2 (Conv2D)             (None, 208, 208, 32)         2048      ['leaky_1[0][0]']
+
+ bnorm_2 (BatchNormalizatio  (None, 208, 208, 32)         128       ['conv_2[0][0]']
+ n)
+
+ leaky_2 (LeakyReLU)         (None, 208, 208, 32)         0         ['bnorm_2[0][0]']
+
+ conv_3 (Conv2D)             (None, 208, 208, 64)         18432     ['leaky_2[0][0]']
+
+ bnorm_3 (BatchNormalizatio  (None, 208, 208, 64)         256       ['conv_3[0][0]']
+ n)
+
+ leaky_3 (LeakyReLU)         (None, 208, 208, 64)         0         ['bnorm_3[0][0]']
+
+ tf.__operators__.add (TFOp  (None, 208, 208, 64)         0         ['leaky_3[0][0]',
+ Lambda)                                                             'leaky_1[0][0]']
+
+ zero_padding2d_1 (ZeroPadd  (None, 209, 209, 64)         0         ['tf.__operators__.add[0][0]']
+ ing2D)
+
+ conv_5 (Conv2D)             (None, 104, 104, 128)        73728     ['zero_padding2d_1[0][0]']
+
+ bnorm_5 (BatchNormalizatio  (None, 104, 104, 128)        512       ['conv_5[0][0]']
+ n)
+
+ leaky_5 (LeakyReLU)         (None, 104, 104, 128)        0         ['bnorm_5[0][0]']
+
+ conv_6 (Conv2D)             (None, 104, 104, 64)         8192      ['leaky_5[0][0]']
+
+ bnorm_6 (BatchNormalizatio  (None, 104, 104, 64)         256       ['conv_6[0][0]']
+ n)
+
+ leaky_6 (LeakyReLU)         (None, 104, 104, 64)         0         ['bnorm_6[0][0]']
+
+ conv_7 (Conv2D)             (None, 104, 104, 128)        73728     ['leaky_6[0][0]']
+
+ bnorm_7 (BatchNormalizatio  (None, 104, 104, 128)        512       ['conv_7[0][0]']
+ n)
+
+ leaky_7 (LeakyReLU)         (None, 104, 104, 128)        0         ['bnorm_7[0][0]']
+
+ tf.__operators__.add_1 (TF  (None, 104, 104, 128)        0         ['leaky_7[0][0]',
+ OpLambda)                                                           'leaky_5[0][0]']
+
+ conv_9 (Conv2D)             (None, 104, 104, 64)         8192      ['tf.__operators__.add_1[0][0]
+                                                                    ']
+
+ bnorm_9 (BatchNormalizatio  (None, 104, 104, 64)         256       ['conv_9[0][0]']
+ n)
+
+ leaky_9 (LeakyReLU)         (None, 104, 104, 64)         0         ['bnorm_9[0][0]']
+
+ conv_10 (Conv2D)            (None, 104, 104, 128)        73728     ['leaky_9[0][0]']
+
+ bnorm_10 (BatchNormalizati  (None, 104, 104, 128)        512       ['conv_10[0][0]']
+ on)
+
+ leaky_10 (LeakyReLU)        (None, 104, 104, 128)        0         ['bnorm_10[0][0]']
+
+ tf.__operators__.add_2 (TF  (None, 104, 104, 128)        0         ['leaky_10[0][0]',
+ OpLambda)                                                           'tf.__operators__.add_1[0][0]
+                                                                    ']
+
+ zero_padding2d_2 (ZeroPadd  (None, 105, 105, 128)        0         ['tf.__operators__.add_2[0][0]
+ ing2D)                                                             ']
+
+ conv_12 (Conv2D)            (None, 52, 52, 256)          294912    ['zero_padding2d_2[0][0]']
+
+ bnorm_12 (BatchNormalizati  (None, 52, 52, 256)          1024      ['conv_12[0][0]']
+ on)
+
+ leaky_12 (LeakyReLU)        (None, 52, 52, 256)          0         ['bnorm_12[0][0]']
+
+ conv_13 (Conv2D)            (None, 52, 52, 128)          32768     ['leaky_12[0][0]']
+
+ bnorm_13 (BatchNormalizati  (None, 52, 52, 128)          512       ['conv_13[0][0]']
+ on)
+
+ leaky_13 (LeakyReLU)        (None, 52, 52, 128)          0         ['bnorm_13[0][0]']
+
+ conv_14 (Conv2D)            (None, 52, 52, 256)          294912    ['leaky_13[0][0]']
+
+ bnorm_14 (BatchNormalizati  (None, 52, 52, 256)          1024      ['conv_14[0][0]']
+ on)
+
+ leaky_14 (LeakyReLU)        (None, 52, 52, 256)          0         ['bnorm_14[0][0]']
+
+ tf.__operators__.add_3 (TF  (None, 52, 52, 256)          0         ['leaky_14[0][0]',
+ OpLambda)                                                           'leaky_12[0][0]']
+
+ conv_16 (Conv2D)            (None, 52, 52, 128)          32768     ['tf.__operators__.add_3[0][0]
+                                                                    ']
+
+ bnorm_16 (BatchNormalizati  (None, 52, 52, 128)          512       ['conv_16[0][0]']
+ on)
+
+ leaky_16 (LeakyReLU)        (None, 52, 52, 128)          0         ['bnorm_16[0][0]']
+
+ conv_17 (Conv2D)            (None, 52, 52, 256)          294912    ['leaky_16[0][0]']
+
+ bnorm_17 (BatchNormalizati  (None, 52, 52, 256)          1024      ['conv_17[0][0]']
+ on)
+
+ leaky_17 (LeakyReLU)        (None, 52, 52, 256)          0         ['bnorm_17[0][0]']
+
+ tf.__operators__.add_4 (TF  (None, 52, 52, 256)          0         ['leaky_17[0][0]',
+ OpLambda)                                                           'tf.__operators__.add_3[0][0]
+                                                                    ']
+
+ conv_19 (Conv2D)            (None, 52, 52, 128)          32768     ['tf.__operators__.add_4[0][0]
+                                                                    ']
+
+ bnorm_19 (BatchNormalizati  (None, 52, 52, 128)          512       ['conv_19[0][0]']
+ on)
+
+ leaky_19 (LeakyReLU)        (None, 52, 52, 128)          0         ['bnorm_19[0][0]']
+
+ conv_20 (Conv2D)            (None, 52, 52, 256)          294912    ['leaky_19[0][0]']
+
+ bnorm_20 (BatchNormalizati  (None, 52, 52, 256)          1024      ['conv_20[0][0]']
+ on)
+
+ leaky_20 (LeakyReLU)        (None, 52, 52, 256)          0         ['bnorm_20[0][0]']
+
+ tf.__operators__.add_5 (TF  (None, 52, 52, 256)          0         ['leaky_20[0][0]',
+ OpLambda)                                                           'tf.__operators__.add_4[0][0]
+                                                                    ']
+
+ conv_22 (Conv2D)            (None, 52, 52, 128)          32768     ['tf.__operators__.add_5[0][0]
+                                                                    ']
+
+ bnorm_22 (BatchNormalizati  (None, 52, 52, 128)          512       ['conv_22[0][0]']
+ on)
+
+ leaky_22 (LeakyReLU)        (None, 52, 52, 128)          0         ['bnorm_22[0][0]']
+
+ conv_23 (Conv2D)            (None, 52, 52, 256)          294912    ['leaky_22[0][0]']
+
+ bnorm_23 (BatchNormalizati  (None, 52, 52, 256)          1024      ['conv_23[0][0]']
+ on)
+
+ leaky_23 (LeakyReLU)        (None, 52, 52, 256)          0         ['bnorm_23[0][0]']
+
+ tf.__operators__.add_6 (TF  (None, 52, 52, 256)          0         ['leaky_23[0][0]',
+ OpLambda)                                                           'tf.__operators__.add_5[0][0]
+                                                                    ']
+
+ conv_25 (Conv2D)            (None, 52, 52, 128)          32768     ['tf.__operators__.add_6[0][0]
+                                                                    ']
+
+ bnorm_25 (BatchNormalizati  (None, 52, 52, 128)          512       ['conv_25[0][0]']
+ on)
+
+ leaky_25 (LeakyReLU)        (None, 52, 52, 128)          0         ['bnorm_25[0][0]']
+
+ conv_26 (Conv2D)            (None, 52, 52, 256)          294912    ['leaky_25[0][0]']
+
+ bnorm_26 (BatchNormalizati  (None, 52, 52, 256)          1024      ['conv_26[0][0]']
+ on)
+
+ leaky_26 (LeakyReLU)        (None, 52, 52, 256)          0         ['bnorm_26[0][0]']
+
+ tf.__operators__.add_7 (TF  (None, 52, 52, 256)          0         ['leaky_26[0][0]',
+ OpLambda)                                                           'tf.__operators__.add_6[0][0]
+                                                                    ']
+
+ conv_28 (Conv2D)            (None, 52, 52, 128)          32768     ['tf.__operators__.add_7[0][0]
+                                                                    ']
+
+ bnorm_28 (BatchNormalizati  (None, 52, 52, 128)          512       ['conv_28[0][0]']
+ on)
+
+ leaky_28 (LeakyReLU)        (None, 52, 52, 128)          0         ['bnorm_28[0][0]']
+
+ conv_29 (Conv2D)            (None, 52, 52, 256)          294912    ['leaky_28[0][0]']
+
+ bnorm_29 (BatchNormalizati  (None, 52, 52, 256)          1024      ['conv_29[0][0]']
+ on)
+
+ leaky_29 (LeakyReLU)        (None, 52, 52, 256)          0         ['bnorm_29[0][0]']
+
+ tf.__operators__.add_8 (TF  (None, 52, 52, 256)          0         ['leaky_29[0][0]',
+ OpLambda)                                                           'tf.__operators__.add_7[0][0]
+                                                                    ']
+
+ conv_31 (Conv2D)            (None, 52, 52, 128)          32768     ['tf.__operators__.add_8[0][0]
+                                                                    ']
+
+ bnorm_31 (BatchNormalizati  (None, 52, 52, 128)          512       ['conv_31[0][0]']
+ on)
+
+ leaky_31 (LeakyReLU)        (None, 52, 52, 128)          0         ['bnorm_31[0][0]']
+
+ conv_32 (Conv2D)            (None, 52, 52, 256)          294912    ['leaky_31[0][0]']
+
+ bnorm_32 (BatchNormalizati  (None, 52, 52, 256)          1024      ['conv_32[0][0]']
+ on)
+
+ leaky_32 (LeakyReLU)        (None, 52, 52, 256)          0         ['bnorm_32[0][0]']
+
+ tf.__operators__.add_9 (TF  (None, 52, 52, 256)          0         ['leaky_32[0][0]',
+ OpLambda)                                                           'tf.__operators__.add_8[0][0]
+                                                                    ']
+
+ conv_34 (Conv2D)            (None, 52, 52, 128)          32768     ['tf.__operators__.add_9[0][0]
+                                                                    ']
+
+ bnorm_34 (BatchNormalizati  (None, 52, 52, 128)          512       ['conv_34[0][0]']
+ on)
+
+ leaky_34 (LeakyReLU)        (None, 52, 52, 128)          0         ['bnorm_34[0][0]']
+
+ conv_35 (Conv2D)            (None, 52, 52, 256)          294912    ['leaky_34[0][0]']
+
+ bnorm_35 (BatchNormalizati  (None, 52, 52, 256)          1024      ['conv_35[0][0]']
+ on)
+
+ leaky_35 (LeakyReLU)        (None, 52, 52, 256)          0         ['bnorm_35[0][0]']
+
+ tf.__operators__.add_10 (T  (None, 52, 52, 256)          0         ['leaky_35[0][0]',
+ FOpLambda)                                                          'tf.__operators__.add_9[0][0]
+                                                                    ']
+
+ zero_padding2d_3 (ZeroPadd  (None, 53, 53, 256)          0         ['tf.__operators__.add_10[0][0
+ ing2D)                                                             ]']
+
+ conv_37 (Conv2D)            (None, 26, 26, 512)          1179648   ['zero_padding2d_3[0][0]']
+
+ bnorm_37 (BatchNormalizati  (None, 26, 26, 512)          2048      ['conv_37[0][0]']
+ on)
+
+ leaky_37 (LeakyReLU)        (None, 26, 26, 512)          0         ['bnorm_37[0][0]']
+
+ conv_38 (Conv2D)            (None, 26, 26, 256)          131072    ['leaky_37[0][0]']
+
+ bnorm_38 (BatchNormalizati  (None, 26, 26, 256)          1024      ['conv_38[0][0]']
+ on)
+
+ leaky_38 (LeakyReLU)        (None, 26, 26, 256)          0         ['bnorm_38[0][0]']
+
+ conv_39 (Conv2D)            (None, 26, 26, 512)          1179648   ['leaky_38[0][0]']
+
+ bnorm_39 (BatchNormalizati  (None, 26, 26, 512)          2048      ['conv_39[0][0]']
+ on)
+
+ leaky_39 (LeakyReLU)        (None, 26, 26, 512)          0         ['bnorm_39[0][0]']
+
+ tf.__operators__.add_11 (T  (None, 26, 26, 512)          0         ['leaky_39[0][0]',
+ FOpLambda)                                                          'leaky_37[0][0]']
+
+ conv_41 (Conv2D)            (None, 26, 26, 256)          131072    ['tf.__operators__.add_11[0][0
+                                                                    ]']
+
+ bnorm_41 (BatchNormalizati  (None, 26, 26, 256)          1024      ['conv_41[0][0]']
+ on)
+
+ leaky_41 (LeakyReLU)        (None, 26, 26, 256)          0         ['bnorm_41[0][0]']
+
+ conv_42 (Conv2D)            (None, 26, 26, 512)          1179648   ['leaky_41[0][0]']
+
+ bnorm_42 (BatchNormalizati  (None, 26, 26, 512)          2048      ['conv_42[0][0]']
+ on)
+
+ leaky_42 (LeakyReLU)        (None, 26, 26, 512)          0         ['bnorm_42[0][0]']
+
+ tf.__operators__.add_12 (T  (None, 26, 26, 512)          0         ['leaky_42[0][0]',
+ FOpLambda)                                                          'tf.__operators__.add_11[0][0
+                                                                    ]']
+
+ conv_44 (Conv2D)            (None, 26, 26, 256)          131072    ['tf.__operators__.add_12[0][0
+                                                                    ]']
+
+ bnorm_44 (BatchNormalizati  (None, 26, 26, 256)          1024      ['conv_44[0][0]']
+ on)
+
+ leaky_44 (LeakyReLU)        (None, 26, 26, 256)          0         ['bnorm_44[0][0]']
+
+ conv_45 (Conv2D)            (None, 26, 26, 512)          1179648   ['leaky_44[0][0]']
+
+ bnorm_45 (BatchNormalizati  (None, 26, 26, 512)          2048      ['conv_45[0][0]']
+ on)
+
+ leaky_45 (LeakyReLU)        (None, 26, 26, 512)          0         ['bnorm_45[0][0]']
+
+ tf.__operators__.add_13 (T  (None, 26, 26, 512)          0         ['leaky_45[0][0]',
+ FOpLambda)                                                          'tf.__operators__.add_12[0][0
+                                                                    ]']
+
+ conv_47 (Conv2D)            (None, 26, 26, 256)          131072    ['tf.__operators__.add_13[0][0
+                                                                    ]']
+
+ bnorm_47 (BatchNormalizati  (None, 26, 26, 256)          1024      ['conv_47[0][0]']
+ on)
+
+ leaky_47 (LeakyReLU)        (None, 26, 26, 256)          0         ['bnorm_47[0][0]']
+
+ conv_48 (Conv2D)            (None, 26, 26, 512)          1179648   ['leaky_47[0][0]']
+
+ bnorm_48 (BatchNormalizati  (None, 26, 26, 512)          2048      ['conv_48[0][0]']
+ on)
+
+ leaky_48 (LeakyReLU)        (None, 26, 26, 512)          0         ['bnorm_48[0][0]']
+
+ tf.__operators__.add_14 (T  (None, 26, 26, 512)          0         ['leaky_48[0][0]',
+ FOpLambda)                                                          'tf.__operators__.add_13[0][0
+                                                                    ]']
+
+ conv_50 (Conv2D)            (None, 26, 26, 256)          131072    ['tf.__operators__.add_14[0][0
+                                                                    ]']
+
+ bnorm_50 (BatchNormalizati  (None, 26, 26, 256)          1024      ['conv_50[0][0]']
+ on)
+
+ leaky_50 (LeakyReLU)        (None, 26, 26, 256)          0         ['bnorm_50[0][0]']
+
+ conv_51 (Conv2D)            (None, 26, 26, 512)          1179648   ['leaky_50[0][0]']
+
+ bnorm_51 (BatchNormalizati  (None, 26, 26, 512)          2048      ['conv_51[0][0]']
+ on)
+
+ leaky_51 (LeakyReLU)        (None, 26, 26, 512)          0         ['bnorm_51[0][0]']
+
+ tf.__operators__.add_15 (T  (None, 26, 26, 512)          0         ['leaky_51[0][0]',
+ FOpLambda)                                                          'tf.__operators__.add_14[0][0
+                                                                    ]']
+
+ conv_53 (Conv2D)            (None, 26, 26, 256)          131072    ['tf.__operators__.add_15[0][0
+                                                                    ]']
+
+ bnorm_53 (BatchNormalizati  (None, 26, 26, 256)          1024      ['conv_53[0][0]']
+ on)
+
+ leaky_53 (LeakyReLU)        (None, 26, 26, 256)          0         ['bnorm_53[0][0]']
+
+ conv_54 (Conv2D)            (None, 26, 26, 512)          1179648   ['leaky_53[0][0]']
+
+ bnorm_54 (BatchNormalizati  (None, 26, 26, 512)          2048      ['conv_54[0][0]']
+ on)
+
+ leaky_54 (LeakyReLU)        (None, 26, 26, 512)          0         ['bnorm_54[0][0]']
+
+ tf.__operators__.add_16 (T  (None, 26, 26, 512)          0         ['leaky_54[0][0]',
+ FOpLambda)                                                          'tf.__operators__.add_15[0][0
+                                                                    ]']
+
+ conv_56 (Conv2D)            (None, 26, 26, 256)          131072    ['tf.__operators__.add_16[0][0
+                                                                    ]']
+
+ bnorm_56 (BatchNormalizati  (None, 26, 26, 256)          1024      ['conv_56[0][0]']
+ on)
+
+ leaky_56 (LeakyReLU)        (None, 26, 26, 256)          0         ['bnorm_56[0][0]']
+
+ conv_57 (Conv2D)            (None, 26, 26, 512)          1179648   ['leaky_56[0][0]']
+
+ bnorm_57 (BatchNormalizati  (None, 26, 26, 512)          2048      ['conv_57[0][0]']
+ on)
+
+ leaky_57 (LeakyReLU)        (None, 26, 26, 512)          0         ['bnorm_57[0][0]']
+
+ tf.__operators__.add_17 (T  (None, 26, 26, 512)          0         ['leaky_57[0][0]',
+ FOpLambda)                                                          'tf.__operators__.add_16[0][0
+                                                                    ]']
+
+ conv_59 (Conv2D)            (None, 26, 26, 256)          131072    ['tf.__operators__.add_17[0][0
+                                                                    ]']
+
+ bnorm_59 (BatchNormalizati  (None, 26, 26, 256)          1024      ['conv_59[0][0]']
+ on)
+
+ leaky_59 (LeakyReLU)        (None, 26, 26, 256)          0         ['bnorm_59[0][0]']
+
+ conv_60 (Conv2D)            (None, 26, 26, 512)          1179648   ['leaky_59[0][0]']
+
+ bnorm_60 (BatchNormalizati  (None, 26, 26, 512)          2048      ['conv_60[0][0]']
+ on)
+
+ leaky_60 (LeakyReLU)        (None, 26, 26, 512)          0         ['bnorm_60[0][0]']
+
+ tf.__operators__.add_18 (T  (None, 26, 26, 512)          0         ['leaky_60[0][0]',
+ FOpLambda)                                                          'tf.__operators__.add_17[0][0
+                                                                    ]']
+
+ zero_padding2d_4 (ZeroPadd  (None, 27, 27, 512)          0         ['tf.__operators__.add_18[0][0
+ ing2D)                                                             ]']
+
+ conv_62 (Conv2D)            (None, 13, 13, 1024)         4718592   ['zero_padding2d_4[0][0]']
+
+ bnorm_62 (BatchNormalizati  (None, 13, 13, 1024)         4096      ['conv_62[0][0]']
+ on)
+
+ leaky_62 (LeakyReLU)        (None, 13, 13, 1024)         0         ['bnorm_62[0][0]']
+
+ conv_63 (Conv2D)            (None, 13, 13, 512)          524288    ['leaky_62[0][0]']
+
+ bnorm_63 (BatchNormalizati  (None, 13, 13, 512)          2048      ['conv_63[0][0]']
+ on)
+
+ leaky_63 (LeakyReLU)        (None, 13, 13, 512)          0         ['bnorm_63[0][0]']
+
+ conv_64 (Conv2D)            (None, 13, 13, 1024)         4718592   ['leaky_63[0][0]']
+
+ bnorm_64 (BatchNormalizati  (None, 13, 13, 1024)         4096      ['conv_64[0][0]']
+ on)
+
+ leaky_64 (LeakyReLU)        (None, 13, 13, 1024)         0         ['bnorm_64[0][0]']
+
+ tf.__operators__.add_19 (T  (None, 13, 13, 1024)         0         ['leaky_64[0][0]',
+ FOpLambda)                                                          'leaky_62[0][0]']
+
+ conv_66 (Conv2D)            (None, 13, 13, 512)          524288    ['tf.__operators__.add_19[0][0
+                                                                    ]']
+
+ bnorm_66 (BatchNormalizati  (None, 13, 13, 512)          2048      ['conv_66[0][0]']
+ on)
+
+ leaky_66 (LeakyReLU)        (None, 13, 13, 512)          0         ['bnorm_66[0][0]']
+
+ conv_67 (Conv2D)            (None, 13, 13, 1024)         4718592   ['leaky_66[0][0]']
+
+ bnorm_67 (BatchNormalizati  (None, 13, 13, 1024)         4096      ['conv_67[0][0]']
+ on)
+
+ leaky_67 (LeakyReLU)        (None, 13, 13, 1024)         0         ['bnorm_67[0][0]']
+
+ tf.__operators__.add_20 (T  (None, 13, 13, 1024)         0         ['leaky_67[0][0]',
+ FOpLambda)                                                          'tf.__operators__.add_19[0][0
+                                                                    ]']
+
+ conv_69 (Conv2D)            (None, 13, 13, 512)          524288    ['tf.__operators__.add_20[0][0
+                                                                    ]']
+
+ bnorm_69 (BatchNormalizati  (None, 13, 13, 512)          2048      ['conv_69[0][0]']
+ on)
+
+ leaky_69 (LeakyReLU)        (None, 13, 13, 512)          0         ['bnorm_69[0][0]']
+
+ conv_70 (Conv2D)            (None, 13, 13, 1024)         4718592   ['leaky_69[0][0]']
+
+ bnorm_70 (BatchNormalizati  (None, 13, 13, 1024)         4096      ['conv_70[0][0]']
+ on)
+
+ leaky_70 (LeakyReLU)        (None, 13, 13, 1024)         0         ['bnorm_70[0][0]']
+
+ tf.__operators__.add_21 (T  (None, 13, 13, 1024)         0         ['leaky_70[0][0]',
+ FOpLambda)                                                          'tf.__operators__.add_20[0][0
+                                                                    ]']
+
+ conv_72 (Conv2D)            (None, 13, 13, 512)          524288    ['tf.__operators__.add_21[0][0
+                                                                    ]']
+
+ bnorm_72 (BatchNormalizati  (None, 13, 13, 512)          2048      ['conv_72[0][0]']
+ on)
+
+ leaky_72 (LeakyReLU)        (None, 13, 13, 512)          0         ['bnorm_72[0][0]']
+
+ conv_73 (Conv2D)            (None, 13, 13, 1024)         4718592   ['leaky_72[0][0]']
+
+ bnorm_73 (BatchNormalizati  (None, 13, 13, 1024)         4096      ['conv_73[0][0]']
+ on)
+
+ leaky_73 (LeakyReLU)        (None, 13, 13, 1024)         0         ['bnorm_73[0][0]']
+
+ tf.__operators__.add_22 (T  (None, 13, 13, 1024)         0         ['leaky_73[0][0]',
+ FOpLambda)                                                          'tf.__operators__.add_21[0][0
+                                                                    ]']
+
+ conv_75 (Conv2D)            (None, 13, 13, 512)          524288    ['tf.__operators__.add_22[0][0
+                                                                    ]']
+
+ bnorm_75 (BatchNormalizati  (None, 13, 13, 512)          2048      ['conv_75[0][0]']
+ on)
+
+ leaky_75 (LeakyReLU)        (None, 13, 13, 512)          0         ['bnorm_75[0][0]']
+
+ conv_76 (Conv2D)            (None, 13, 13, 1024)         4718592   ['leaky_75[0][0]']
+
+ bnorm_76 (BatchNormalizati  (None, 13, 13, 1024)         4096      ['conv_76[0][0]']
+ on)
+
+ leaky_76 (LeakyReLU)        (None, 13, 13, 1024)         0         ['bnorm_76[0][0]']
+
+ conv_77 (Conv2D)            (None, 13, 13, 512)          524288    ['leaky_76[0][0]']
+
+ bnorm_77 (BatchNormalizati  (None, 13, 13, 512)          2048      ['conv_77[0][0]']
+ on)
+
+ leaky_77 (LeakyReLU)        (None, 13, 13, 512)          0         ['bnorm_77[0][0]']
+
+ conv_78 (Conv2D)            (None, 13, 13, 1024)         4718592   ['leaky_77[0][0]']
+
+ bnorm_78 (BatchNormalizati  (None, 13, 13, 1024)         4096      ['conv_78[0][0]']
+ on)
+
+ leaky_78 (LeakyReLU)        (None, 13, 13, 1024)         0         ['bnorm_78[0][0]']
+
+ conv_79 (Conv2D)            (None, 13, 13, 512)          524288    ['leaky_78[0][0]']
+
+ bnorm_79 (BatchNormalizati  (None, 13, 13, 512)          2048      ['conv_79[0][0]']
+ on)
+
+ leaky_79 (LeakyReLU)        (None, 13, 13, 512)          0         ['bnorm_79[0][0]']
+
+ conv_84 (Conv2D)            (None, 13, 13, 256)          131072    ['leaky_79[0][0]']
+
+ bnorm_84 (BatchNormalizati  (None, 13, 13, 256)          1024      ['conv_84[0][0]']
+ on)
+
+ leaky_84 (LeakyReLU)        (None, 13, 13, 256)          0         ['bnorm_84[0][0]']
+
+ up_sampling2d (UpSampling2  (None, 26, 26, 256)          0         ['leaky_84[0][0]']
+ D)
+
+ tf.concat_1 (TFOpLambda)    (None, 26, 26, 768)          0         ['up_sampling2d[0][0]',
+                                                                     'tf.__operators__.add_18[0][0
+                                                                    ]']
+
+ conv_87 (Conv2D)            (None, 26, 26, 256)          196608    ['tf.concat_1[0][0]']
+
+ bnorm_87 (BatchNormalizati  (None, 26, 26, 256)          1024      ['conv_87[0][0]']
+ on)
+
+ leaky_87 (LeakyReLU)        (None, 26, 26, 256)          0         ['bnorm_87[0][0]']
+
+ conv_88 (Conv2D)            (None, 26, 26, 512)          1179648   ['leaky_87[0][0]']
+
+ bnorm_88 (BatchNormalizati  (None, 26, 26, 512)          2048      ['conv_88[0][0]']
+ on)
+
+ leaky_88 (LeakyReLU)        (None, 26, 26, 512)          0         ['bnorm_88[0][0]']
+
+ conv_89 (Conv2D)            (None, 26, 26, 256)          131072    ['leaky_88[0][0]']
+
+ bnorm_89 (BatchNormalizati  (None, 26, 26, 256)          1024      ['conv_89[0][0]']
+ on)
+
+ leaky_89 (LeakyReLU)        (None, 26, 26, 256)          0         ['bnorm_89[0][0]']
+
+ conv_90 (Conv2D)            (None, 26, 26, 512)          1179648   ['leaky_89[0][0]']
+
+ bnorm_90 (BatchNormalizati  (None, 26, 26, 512)          2048      ['conv_90[0][0]']
+ on)
+
+ leaky_90 (LeakyReLU)        (None, 26, 26, 512)          0         ['bnorm_90[0][0]']
+
+ conv_91 (Conv2D)            (None, 26, 26, 256)          131072    ['leaky_90[0][0]']
+
+ bnorm_91 (BatchNormalizati  (None, 26, 26, 256)          1024      ['conv_91[0][0]']
+ on)
+
+ leaky_91 (LeakyReLU)        (None, 26, 26, 256)          0         ['bnorm_91[0][0]']
+
+ conv_96 (Conv2D)            (None, 26, 26, 128)          32768     ['leaky_91[0][0]']
+
+ bnorm_96 (BatchNormalizati  (None, 26, 26, 128)          512       ['conv_96[0][0]']
+ on)
+
+ leaky_96 (LeakyReLU)        (None, 26, 26, 128)          0         ['bnorm_96[0][0]']
+
+ up_sampling2d_1 (UpSamplin  (None, 52, 52, 128)          0         ['leaky_96[0][0]']
+ g2D)
+
+ tf.concat_4 (TFOpLambda)    (None, 52, 52, 384)          0         ['up_sampling2d_1[0][0]',
+                                                                     'tf.__operators__.add_10[0][0
+                                                                    ]']
+
+ conv_99 (Conv2D)            (None, 52, 52, 128)          49152     ['tf.concat_4[0][0]']
+
+ bnorm_99 (BatchNormalizati  (None, 52, 52, 128)          512       ['conv_99[0][0]']
+ on)
+
+ leaky_99 (LeakyReLU)        (None, 52, 52, 128)          0         ['bnorm_99[0][0]']
+
+ conv_100 (Conv2D)           (None, 52, 52, 256)          294912    ['leaky_99[0][0]']
+
+ bnorm_100 (BatchNormalizat  (None, 52, 52, 256)          1024      ['conv_100[0][0]']
+ ion)
+
+ leaky_100 (LeakyReLU)       (None, 52, 52, 256)          0         ['bnorm_100[0][0]']
+
+ conv_101 (Conv2D)           (None, 52, 52, 128)          32768     ['leaky_100[0][0]']
+
+ bnorm_101 (BatchNormalizat  (None, 52, 52, 128)          512       ['conv_101[0][0]']
+ ion)
+
+ leaky_101 (LeakyReLU)       (None, 52, 52, 128)          0         ['bnorm_101[0][0]']
+
+ conv_102 (Conv2D)           (None, 52, 52, 256)          294912    ['leaky_101[0][0]']
+
+ bnorm_102 (BatchNormalizat  (None, 52, 52, 256)          1024      ['conv_102[0][0]']
+ ion)
+
+ leaky_102 (LeakyReLU)       (None, 52, 52, 256)          0         ['bnorm_102[0][0]']
+
+ conv_103 (Conv2D)           (None, 52, 52, 128)          32768     ['leaky_102[0][0]']
+
+ bnorm_103 (BatchNormalizat  (None, 52, 52, 128)          512       ['conv_103[0][0]']
+ ion)
+
+ conv_80 (Conv2D)            (None, 13, 13, 1024)         4718592   ['leaky_79[0][0]']
+
+ conv_92 (Conv2D)            (None, 26, 26, 512)          1179648   ['leaky_91[0][0]']
+
+ leaky_103 (LeakyReLU)       (None, 52, 52, 128)          0         ['bnorm_103[0][0]']
+
+ bnorm_80 (BatchNormalizati  (None, 13, 13, 1024)         4096      ['conv_80[0][0]']
+ on)
+
+ bnorm_92 (BatchNormalizati  (None, 26, 26, 512)          2048      ['conv_92[0][0]']
+ on)
+
+ conv_104 (Conv2D)           (None, 52, 52, 256)          294912    ['leaky_103[0][0]']
+
+ leaky_80 (LeakyReLU)        (None, 13, 13, 1024)         0         ['bnorm_80[0][0]']
+
+ leaky_92 (LeakyReLU)        (None, 26, 26, 512)          0         ['bnorm_92[0][0]']
+
+ bnorm_104 (BatchNormalizat  (None, 52, 52, 256)          1024      ['conv_104[0][0]']
+ ion)
+
+ conv_81 (Conv2D)            (None, 13, 13, 255)          261375    ['leaky_80[0][0]']
+
+ conv_93 (Conv2D)            (None, 26, 26, 255)          130815    ['leaky_92[0][0]']
+
+ leaky_104 (LeakyReLU)       (None, 52, 52, 256)          0         ['bnorm_104[0][0]']
+
+ tf.reshape (TFOpLambda)     (None, 507, 85)              0         ['conv_81[0][0]']
+
+ tf.reshape_1 (TFOpLambda)   (None, 2028, 85)             0         ['conv_93[0][0]']
+
+ conv_105 (Conv2D)           (None, 52, 52, 255)          65535     ['leaky_104[0][0]']
+
+ tf.__operators__.getitem (  (None, 507, 2)               0         ['tf.reshape[0][0]']
+ SlicingOpLambda)
+
+ tf.__operators__.getitem_4  (None, 2028, 2)              0         ['tf.reshape_1[0][0]']
+  (SlicingOpLambda)
+
+ tf.reshape_2 (TFOpLambda)   (None, 8112, 85)             0         ['conv_105[0][0]']
+
+ tf.math.sigmoid (TFOpLambd  (None, 507, 2)               0         ['tf.__operators__.getitem[0][
+ a)                                                                 0]']
+
+ tf.__operators__.getitem_1  (None, 507, 2)               0         ['tf.reshape[0][0]']
+  (SlicingOpLambda)
+
+ tf.math.sigmoid_3 (TFOpLam  (None, 2028, 2)              0         ['tf.__operators__.getitem_4[0
+ bda)                                                               ][0]']
+
+ tf.__operators__.getitem_5  (None, 2028, 2)              0         ['tf.reshape_1[0][0]']
+  (SlicingOpLambda)
+
+ tf.__operators__.getitem_8  (None, 8112, 2)              0         ['tf.reshape_2[0][0]']
+  (SlicingOpLambda)
+
+ tf.__operators__.add_23 (T  (None, 507, 2)               0         ['tf.math.sigmoid[0][0]']
+ FOpLambda)
+
+ tf.math.exp (TFOpLambda)    (None, 507, 2)               0         ['tf.__operators__.getitem_1[0
+                                                                    ][0]']
+
+ tf.__operators__.getitem_2  (None, 507, 1)               0         ['tf.reshape[0][0]']
+  (SlicingOpLambda)
+
+ tf.__operators__.getitem_3  (None, 507, 80)              0         ['tf.reshape[0][0]']
+  (SlicingOpLambda)
+
+ tf.__operators__.add_24 (T  (None, 2028, 2)              0         ['tf.math.sigmoid_3[0][0]']
+ FOpLambda)
+
+ tf.math.exp_1 (TFOpLambda)  (None, 2028, 2)              0         ['tf.__operators__.getitem_5[0
+                                                                    ][0]']
+
+ tf.__operators__.getitem_6  (None, 2028, 1)              0         ['tf.reshape_1[0][0]']
+  (SlicingOpLambda)
+
+ tf.__operators__.getitem_7  (None, 2028, 80)             0         ['tf.reshape_1[0][0]']
+  (SlicingOpLambda)
+
+ tf.math.sigmoid_6 (TFOpLam  (None, 8112, 2)              0         ['tf.__operators__.getitem_8[0
+ bda)                                                               ][0]']
+
+ tf.__operators__.getitem_9  (None, 8112, 2)              0         ['tf.reshape_2[0][0]']
+  (SlicingOpLambda)
+
+ tf.math.multiply_1 (TFOpLa  (None, 507, 2)               0         ['tf.__operators__.add_23[0][0
+ mbda)                                                              ]']
+
+ tf.math.multiply (TFOpLamb  (None, 507, 2)               0         ['tf.math.exp[0][0]']
+ da)
+
+ tf.math.sigmoid_1 (TFOpLam  (None, 507, 1)               0         ['tf.__operators__.getitem_2[0
+ bda)                                                               ][0]']
+
+ tf.math.sigmoid_2 (TFOpLam  (None, 507, 80)              0         ['tf.__operators__.getitem_3[0
+ bda)                                                               ][0]']
+
+ tf.math.multiply_3 (TFOpLa  (None, 2028, 2)              0         ['tf.__operators__.add_24[0][0
+ mbda)                                                              ]']
+
+ tf.math.multiply_2 (TFOpLa  (None, 2028, 2)              0         ['tf.math.exp_1[0][0]']
+ mbda)
+
+ tf.math.sigmoid_4 (TFOpLam  (None, 2028, 1)              0         ['tf.__operators__.getitem_6[0
+ bda)                                                               ][0]']
+
+ tf.math.sigmoid_5 (TFOpLam  (None, 2028, 80)             0         ['tf.__operators__.getitem_7[0
+ bda)                                                               ][0]']
+
+ tf.__operators__.add_25 (T  (None, 8112, 2)              0         ['tf.math.sigmoid_6[0][0]']
+ FOpLambda)
+
+ tf.math.exp_2 (TFOpLambda)  (None, 8112, 2)              0         ['tf.__operators__.getitem_9[0
+                                                                    ][0]']
+
+ tf.__operators__.getitem_1  (None, 8112, 1)              0         ['tf.reshape_2[0][0]']
+ 0 (SlicingOpLambda)
+
+ tf.__operators__.getitem_1  (None, 8112, 80)             0         ['tf.reshape_2[0][0]']
+ 1 (SlicingOpLambda)
+
+ tf.concat (TFOpLambda)      (None, 507, 85)              0         ['tf.math.multiply_1[0][0]',
+                                                                     'tf.math.multiply[0][0]',
+                                                                     'tf.math.sigmoid_1[0][0]',
+                                                                     'tf.math.sigmoid_2[0][0]']
+
+ tf.concat_2 (TFOpLambda)    (None, 2028, 85)             0         ['tf.math.multiply_3[0][0]',
+                                                                     'tf.math.multiply_2[0][0]',
+                                                                     'tf.math.sigmoid_4[0][0]',
+                                                                     'tf.math.sigmoid_5[0][0]']
+
+ tf.math.multiply_5 (TFOpLa  (None, 8112, 2)              0         ['tf.__operators__.add_25[0][0
+ mbda)                                                              ]']
+
+ tf.math.multiply_4 (TFOpLa  (None, 8112, 2)              0         ['tf.math.exp_2[0][0]']
+ mbda)
+
+ tf.math.sigmoid_7 (TFOpLam  (None, 8112, 1)              0         ['tf.__operators__.getitem_10[
+ bda)                                                               0][0]']
+
+ tf.math.sigmoid_8 (TFOpLam  (None, 8112, 80)             0         ['tf.__operators__.getitem_11[
+ bda)                                                               0][0]']
+
+ tf.concat_3 (TFOpLambda)    (None, 2535, 85)             0         ['tf.concat[0][0]',
+                                                                     'tf.concat_2[0][0]']
+
+ tf.concat_5 (TFOpLambda)    (None, 8112, 85)             0         ['tf.math.multiply_5[0][0]',
+                                                                     'tf.math.multiply_4[0][0]',
+                                                                     'tf.math.sigmoid_7[0][0]',
+                                                                     'tf.math.sigmoid_8[0][0]']
+
+ tf.concat_6 (TFOpLambda)    (None, 10647, 85)            0         ['tf.concat_3[0][0]',
+                                                                     'tf.concat_5[0][0]']
+
+==================================================================================================
+Total params: 62001757 (236.52 MB)
+Trainable params: 61949149 (236.32 MB)
+Non-trainable params: 52608 (205.50 KB)
+__________________________________________________________________________________________________
+layer:  1 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E60AE20>
+layer:  1 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E67AD00>
+layer:  2 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E67ADC0>
+layer:  2 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E6C5610>
+layer:  3 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E73EE50>
+layer:  3 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E73EE80>
+layer:  4 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E755BE0>
+layer:  4 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E755A60>
+layer:  6 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E74D910>
+layer:  6 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E75D910>
+layer:  7 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E77CA60>
+layer:  7 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E77CE50>
+layer:  8 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E7869A0>
+layer:  8 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E782BE0>
+layer:  10 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E793910>
+layer:  10 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E78DB80>
+layer:  11 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E7A7C70>
+layer:  11 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E7A7AF0>
+layer:  13 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E7BA4F0>
+layer:  13 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E7C50A0>
+layer:  14 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E7AC370>
+layer:  14 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E7CCB20>
+layer:  15 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E7C52E0>
+layer:  15 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E766190>
+layer:  17 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E782820>
+layer:  17 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E7D9100>
+layer:  18 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E7DB460>
+layer:  18 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E7DD820>
+layer:  20 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E7DF2E0>
+layer:  20 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E7DA670>
+layer:  21 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E7E6A30>
+layer:  21 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E7E9EE0>
+layer:  23 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E7F77F0>
+layer:  23 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E7F7700>
+layer:  24 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E8043A0>
+layer:  24 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E804E20>
+layer:  26 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E80DD60>
+layer:  26 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E8047C0>
+layer:  27 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E81A520>
+layer:  27 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E815970>
+layer:  29 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E824460>
+layer:  29 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E820550>
+layer:  30 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E8358E0>
+layer:  30 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E835A60>
+layer:  32 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E83DDC0>
+layer:  32 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E834BB0>
+layer:  33 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E74DC10>
+layer:  33 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E75DE80>
+layer:  35 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E82DA60>
+layer:  35 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E84C190>
+layer:  36 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E851A90>
+layer:  36 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E8540A0>
+layer:  38 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E869B80>
+layer:  38 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E869C40>
+layer:  39 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E872EE0>
+layer:  39 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E8798E0>
+layer:  40 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E87DEB0>
+layer:  40 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E88B160>
+layer:  42 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E88BF70>
+layer:  42 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E8962E0>
+layer:  43 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E8A4310>
+layer:  43 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E8A86D0>
+layer:  45 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E8B1100>
+layer:  45 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E8B1AC0>
+layer:  46 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E8B4B50>
+layer:  46 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E8C39A0>
+layer:  48 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E8AF250>
+layer:  48 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E8C95E0>
+layer:  49 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E869E80>
+layer:  49 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E872AF0>
+layer:  51 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E8D0A90>
+layer:  51 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E8DA4F0>
+layer:  52 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E8DD310>
+layer:  52 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E8DCA00>
+layer:  54 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E8DD1C0>
+layer:  54 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E8DC4F0>
+layer:  55 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E8E43D0>
+layer:  55 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E8DE6A0>
+layer:  57 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E8E4700>
+layer:  57 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E8DA040>
+layer:  58 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E8F9820>
+layer:  58 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E8F5880>
+layer:  60 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E8E4790>
+layer:  60 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E87DA00>
+layer:  61 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E90BCD0>
+layer:  61 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E914970>
+layer:  63 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E8DC430>
+layer:  63 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E91D940>
+layer:  64 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E93B6A0>
+layer:  64 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E93B4C0>
+layer:  65 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E944F10>
+layer:  65 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E93BB80>
+layer:  67 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E903E80>
+layer:  67 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E8DE820>
+layer:  68 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E94B4F0>
+layer:  68 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E93BD00>
+layer:  70 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E8547F0>
+layer:  70 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E8F9190>
+layer:  71 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E8E0B50>
+layer:  71 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E957640>
+layer:  73 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E951640>
+layer:  73 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E912610>
+layer:  74 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E957130>
+layer:  74 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E97A910>
+layer:  76 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E986B20>
+layer:  76 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E92CA60>
+layer:  77 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E9A3AF0>
+layer:  77 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E998CD0>
+layer:  78 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E9B5910>
+layer:  78 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E9B5730>
+layer:  79 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E9C1880>
+layer:  79 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E9AC2B0>
+layer:  80 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E9D4A30>
+layer:  80 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E9CC4C0>
+layer:  81 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E9DA8B0>
+layer:  81 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E9D4E20>
+layer:  82 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E9860A0>
+layer:  85 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E9A36D0>
+layer:  85 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E9FFB20>
+layer:  88 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66EA0E6A0>
+layer:  88 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66EDC2430>
+layer:  89 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E9F9850>
+layer:  89 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66EDC2CD0>
+layer:  90 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66EDCE940>
+layer:  90 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66EDDD1C0>
+layer:  91 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66EDDD6D0>
+layer:  91 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66EDDD8B0>
+layer:  92 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66EDE6D00>
+layer:  92 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66EDF4130>
+layer:  93 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66EDF49D0>
+layer:  93 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66EDC2F70>
+layer:  94 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66E9FF700>
+layer:  97 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66EDEB670>
+layer:  97 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66E94B850>
+layer:  100 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66EA0E6D0>
+layer:  100 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66EE04D30>
+layer:  101 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66EE261F0>
+layer:  101 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66EE1F070>
+layer:  102 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66EE171F0>
+layer:  102 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66EE41250>
+layer:  103 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66EE419D0>
+layer:  103 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66EE50910>
+layer:  104 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66EE37070>
+layer:  104 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66EE57250>
+layer:  105 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66EE50EB0>
+layer:  105 <keras.src.layers.normalization.batch_normalization.BatchNormalization object at 0x000001C66EE69940>
+layer:  106 <keras.src.layers.convolutional.conv2d.Conv2D object at 0x000001C66EE602E0>
+
+The file 'yolov3_weights.tf' has been saved successfully.
