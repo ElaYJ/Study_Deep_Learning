@@ -1,0 +1,9 @@
+names:
+- leaf
+- stem
+- flower
+- fruit
+nc: 4
+test: /content/drive/MyDrive/DLP/YOLO_data/test/images
+train: /content/drive/MyDrive/DLP/YOLO_data/train/images
+val: /content/drive/MyDrive/DLP/YOLO_data/valid/images
